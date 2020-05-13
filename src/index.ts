@@ -21,6 +21,9 @@ async function run() {
         const files = await globber.glob();
         console.log("Matched manifests: ", files.join("\n"));
         const file = files[0];
+        if (file === undefined){
+            core.setFailed("No manifests found!");
+        }
         console.log("Using file: ", file);
         const versionString = await getManifestVersion(file);
         console.log(versionString);
