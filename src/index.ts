@@ -7,7 +7,7 @@ async function run() {
     const packageName = core.getInput('packageName');
 
     core.group("Get Version", async () => {
-        if (manifestPath === "*.dnn"){
+        if (manifestPath === "**/*.dnn"){
             console.log("No manifest path provided, will use the first package from the first manifest.");
         }
         else{

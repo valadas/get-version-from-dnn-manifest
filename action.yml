@@ -3,9 +3,9 @@ author: valadas
 description: Gets the version information from a Dnn manifest.
 inputs:
   manifestPath:
-    description: If a path provided will load the version from this specific manifest.
+    description: If a glob is provided will load the version from the first matched file in the glob.
     required: false
-    default: '*.dnn'
+    default: '**/*.dnn'
   packageName:
     description: If manifest AND package is provided, will load the version from taht specific manifest and from that specific package name.
     required: false

@@ -14,7 +14,7 @@ async function run() {
     const manifestPath = core.getInput('manifestPath');
     const packageName = core.getInput('packageName');
     core.group("Get Version", async () => {
-        if (manifestPath === "*.dnn") {
+        if (manifestPath === "**/*.dnn") {
             console.log("No manifest path provided, will use the first package from the first manifest.");
         }
         else {
@@ -27,6 +27,9 @@ async function run() {
         const files = await globber.glob();
         console.log("Matched manifests: ", files.join("\n"));
         const file = files[0];
+        if (file === undefined) {
+            core.setFailed("No manifests found!");
+        }
         console.log("Using file: ", file);
         const versionString = await getManifestVersion(file);
         console.log(versionString);
