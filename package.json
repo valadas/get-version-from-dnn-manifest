@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/valadas/get-version-from-dnn-manifest#readme",
   "dependencies": {
-    "@actions/core": "^1.2.4"
+    "@actions/core": "^1.2.4",
+    "@actions/glob": "^0.1.0"
   }
 }
