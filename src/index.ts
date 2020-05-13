@@ -26,7 +26,7 @@ async function run() {
         else {
             const file = files[0];
             console.log("Using file: ", file);
-            const versionString = await getManifestVersion(file);
+            const versionString = await getManifestVersion(file, packageName);
             console.log("Found version string: ", versionString);
             if (versionString === ""){
                 core.setFailed("No version found!");
