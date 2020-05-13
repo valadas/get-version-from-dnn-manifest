@@ -10,15 +10,15 @@ inputs:
     description: If manifest AND package is provided, will load the version from taht specific manifest and from that specific package name.
     required: false
     default: ''
-  outputs:
-    major:
-      description: a number representing the major version number. Returns 1 for version 01.02.03
-    minor:
-      description: a number representing the minor version number. Returns 2 for version 01.02.03
-    patch:
-      description: a number representing the patch version number. Return 3 for version 01.02.03
-    versionString:
-      description: a string representing the version number exactly as it is in the manifest.
+outputs:
+  major:
+    description: a number representing the major version number. Returns 1 for version 01.02.03
+  minor:
+    description: a number representing the minor version number. Returns 2 for version 01.02.03
+  patch:
+    description: a number representing the patch version number. Return 3 for version 01.02.03
+  versionString:
+    description: a string representing the version number exactly as it is in the manifest.
 runs:
   using: 'node12'
   main: 'dist/index.js'
