@@ -1,0 +1,19 @@
+{
+  "name": "get-version-from-dnn-manifest",
+  "version": "1.0.0",
+  "description": "gets the version information from a dnn manifest",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valadas/get-version-from-dnn-manifest.git"
+  },
+  "author": "valadas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/valadas/get-version-from-dnn-manifest/issues"
+  },
+  "homepage": "https://github.com/valadas/get-version-from-dnn-manifest#readme"
+}
