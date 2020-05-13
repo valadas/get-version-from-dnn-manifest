@@ -20,7 +20,7 @@ async function run() {
         else {
             console.log("Trying to read from: ", manifestPath);
         }
-        if (packageName !== "") {
+        if (packageName !== "" && manifestPath === "**/*.dnn") {
             core.setFailed("packageName can only be used if you also specify manifestPath.");
         }
         const globber = await glob.create(manifestPath, { followSymbolicLinks: false });
