@@ -5,7 +5,7 @@ inputs:
   manifestPath:
     description: If a path provided will load the version from this specific manifest.
     required: false
-    default: ''
+    default: '*.dnn'
   packageName:
     description: If manifest AND package is provided, will load the version from taht specific manifest and from that specific package name.
     required: false
