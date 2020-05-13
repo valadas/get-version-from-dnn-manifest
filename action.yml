@@ -21,4 +21,4 @@ inputs:
       description: a string representing the version number exactly as it is in the manifest.
 runs:
   using: 'node12'
-  main: './dist/index.js'
+  main: 'dist/index.js'
