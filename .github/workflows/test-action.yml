@@ -24,7 +24,7 @@ jobs:
         uses: ./
         id: testActionWithManifestPath
         with:
-          manifestPath: ./Resources/manifest.dnn
+          manifestPath: Resources/manifest.dnn
       - name: Log Result
         run: echo $MAJOR.$MINOR.$PATCH $VERSION_STRING
         env:
