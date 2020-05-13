@@ -33,7 +33,7 @@ async function run() {
 const getManifestVersion = async (file: string, packageName: string = ".*", ) => {
     var version = "";
     const fileContent = readFileSync(file).toString();
-    const rx = new RegExp(`<package.*name=".*${packageName}.*".*version="(.*)"`);
+    const rx = new RegExp(`<package.*name=".*${packageName}.*".*version="(.*)".*>`);
     const node = rx.exec(fileContent);
     console.log("Using package node: ", node);
     return node ? node.toString() : "";
