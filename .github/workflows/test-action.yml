@@ -2,14 +2,30 @@ name: test-action
 on: push
 
 jobs:
-  testAction:
+  testActionDefault:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: test-action
+      - name: Test Action without inputs
         uses: ./
         id: testAction
-      - name: log-result
+      - name: Log Result
+        run: echo $MAJOR.$MINOR.$PATCH $VERSION_STRING
+        env:
+          MAJOR: ${{ steps.testAction.outputs.major }}
+          MINOR: ${{ steps.testAction.outputs.minor }}
+          PATCH: ${{ steps.testAction.outputs.patch }}
+          VERSION_STRING: ${{ steps.testAction.outputs.versionString }}
+  testActionWithManifestPath:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test action with manifestPath
+        uses: ./
+        id: testActionWithManifestPath
+        with:
+          manifestPath: ./Resources/manifest.dnn
+      - name: Log Result
         run: echo $MAJOR.$MINOR.$PATCH $VERSION_STRING
         env:
           MAJOR: ${{ steps.testAction.outputs.major }}
