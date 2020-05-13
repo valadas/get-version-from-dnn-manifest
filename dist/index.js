@@ -14,17 +14,15 @@ async function run() {
     const manifestPath = core.getInput('manifestPath');
     const packageName = core.getInput('packageName');
     core.group("Get Version", async () => {
-        if (manifestPath === "") {
-            console.log("No manifest path provided, will use the first package from the first manifest.");
-            if (packageName !== "") {
-                core.setFailed("packageName can only be used if you also specify manifestPath.");
-            }
-            const globber = await glob.create(manifestPath, { followSymbolicLinks: false });
-            const files = await globber.glob();
-            const file = files[0];
-            const versionString = await getManifestVersion(file);
-            console.log(versionString);
+        console.log("No manifest path provided, will use the first package from the first manifest.");
+        if (packageName !== "") {
+            core.setFailed("packageName can only be used if you also specify manifestPath.");
         }
+        const globber = await glob.create(manifestPath, { followSymbolicLinks: false });
+        const files = await globber.glob();
+        const file = files[0];
+        const versionString = await getManifestVersion(file);
+        console.log(versionString);
     });
 }
 const getManifestVersion = async (file, packageName = ".*") => {
