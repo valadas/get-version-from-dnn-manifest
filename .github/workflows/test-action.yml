@@ -28,7 +28,7 @@ jobs:
       - name: Log Result
         run: echo $MAJOR.$MINOR.$PATCH $VERSION_STRING
         env:
-          MAJOR: ${{ steps.testAction.outputs.major }}
-          MINOR: ${{ steps.testAction.outputs.minor }}
-          PATCH: ${{ steps.testAction.outputs.patch }}
-          VERSION_STRING: ${{ steps.testAction.outputs.versionString }}
+          MAJOR: ${{ steps.testActionWithManifestPath.outputs.major }}
+          MINOR: ${{ steps.testActionWithManifestPath.outputs.minor }}
+          PATCH: ${{ steps.testActionWithManifestPath.outputs.patch }}
+          VERSION_STRING: ${{ steps.testActionWithManifestPath.outputs.versionString }}
