@@ -46,7 +46,7 @@ const getManifestVersion = async (file, packageName = ".*") => {
         core.setFailed(noNodeFoundErrorMessage);
     }
     else {
-        const nodeVersion = node ? [1] : "";
+        const nodeVersion = node ? node[1] : "";
         if (version = "") {
             core.setFailed("No version found on node");
         }
