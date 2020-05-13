@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/valadas/get-version-from-dnn-manifest/issues"
   },
-  "homepage": "https://github.com/valadas/get-version-from-dnn-manifest#readme"
+  "homepage": "https://github.com/valadas/get-version-from-dnn-manifest#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.4"
+  }
 }
