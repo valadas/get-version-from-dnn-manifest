@@ -52,9 +52,12 @@ const getManifestVersion = async (file, packageName = ".*") => {
     var version = "";
     const fileContent = fs_1.readFileSync(file).toString();
     const rx = new RegExp(`<package.*name=".*${packageName}.*".*version="(.*)".*>`);
+    console.log("Using pattern: ", rx.source);
+    console.log("With flags: ", rx.flags);
     const node = rx.exec(fileContent);
     const noNodeFoundErrorMessage = "No matching node found!";
     const nodeText = node ? node[0] : noNodeFoundErrorMessage;
+    console.log("Found node: ", nodeText);
     if (nodeText === noNodeFoundErrorMessage) {
         core.setFailed(noNodeFoundErrorMessage);
     }
