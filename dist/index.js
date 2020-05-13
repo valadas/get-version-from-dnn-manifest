@@ -11,24 +11,23 @@ const core = __importStar(require("@actions/core"));
 const glob = __importStar(require("@actions/glob"));
 const fs_1 = require("fs");
 async function run() {
-    return new Promise(async (resolve, reject) => {
-        const manifestPath = core.getInput('manifestPath');
-        const packageName = core.getInput('packageName');
+    const manifestPath = core.getInput('manifestPath');
+    const packageName = core.getInput('packageName');
+    core.group("Get Version", async () => {
         if (manifestPath === "") {
             console.log("No manifest path provided, will use the first package from the first manifest.");
             if (packageName !== "") {
                 core.setFailed("packageName can only be used if you also specify manifestPath.");
-                reject("packageName provided without a manifestPath");
             }
             const globber = await glob.create(manifestPath, { followSymbolicLinks: false });
             const files = await globber.glob();
             const file = files[0];
-            console.log(getManifestVersion(file));
+            const versionString = await getManifestVersion(file);
+            console.log(versionString);
         }
-        resolve();
     });
 }
-const getManifestVersion = (file, packageName = ".*") => {
+const getManifestVersion = async (file, packageName = ".*") => {
     var version = "";
     const fileContent = fs_1.readFileSync(file).toString();
     const rx = new RegExp(`<package.*name=".*${packageName}.*".*version="(.*)"`);
