@@ -725,7 +725,7 @@
 				</component>
 			</components>
 		</package>
-		<package name="Dnn.PersonaBar.UI_nl-NL" type="ExtensionLanguagePack" version="02.03.04">
+		<package name="Dnn.PersonaBar.UI_nl-NL" type="ExtensionLanguagePack" version="01.02.03">
 			<friendlyName>Dnn.PersonaBar.UI Nederlands (Nederland)</friendlyName>
 			<description>Dutch (Netherlands) core language pack for DNN Platform.</description>
 			<iconFile />

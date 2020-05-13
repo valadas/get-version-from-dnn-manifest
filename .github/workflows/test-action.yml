@@ -32,3 +32,21 @@ jobs:
           MINOR: ${{ steps.testActionWithManifestPath.outputs.minor }}
           PATCH: ${{ steps.testActionWithManifestPath.outputs.patch }}
           VERSION_STRING: ${{ steps.testActionWithManifestPath.outputs.versionString }}
+    testActionWithManifestPathAndPackage:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: Test action with manifestPath
+          uses: ./
+          id: testActionWithManifestPathAndPackage
+          with:
+            manifestPath: Resources/testManifest.dnn
+            package: Dnn.PersonaBar.UI_nl-NL
+        - name: Log Result
+          run: echo $MAJOR.$MINOR.$PATCH $VERSION_STRING
+          env:
+            MAJOR: ${{ steps.testActionWithManifestPathAndPackage.outputs.major }}
+            MINOR: ${{ steps.testActionWithManifestPathAndPackage.outputs.minor }}
+            PATCH: ${{ steps.testActionWithManifestPathAndPackage.outputs.patch }}
+            VERSION_STRING: ${{ steps.testActionWithManifestPathAndPackage.outputs.versionString }}
+
