@@ -29,19 +29,23 @@ async function run() {
         if (files.length < 1) {
             core.setFailed("No manifests found!");
         }
-        const file = files[0];
-        console.log("Using file: ", file);
-        const versionString = await getManifestVersion(file);
-        console.log("Found version string: ", versionString);
-        if (versionString === "") {
-            core.setFailed("No version found!");
+        else {
+            const file = files[0];
+            console.log("Using file: ", file);
+            const versionString = await getManifestVersion(file);
+            console.log("Found version string: ", versionString);
+            if (versionString === "") {
+                core.setFailed("No version found!");
+            }
+            else {
+                const version = await getVersion(versionString);
+                console.log("Returning", version);
+                core.setOutput("major", version.major);
+                core.setOutput("minor", version.minor);
+                core.setOutput("patch", version.patch);
+                core.setOutput("versionString", version.versionString);
+            }
         }
-        const version = await getVersion(versionString);
-        console.log("Returning", version);
-        core.setOutput("major", version.major);
-        core.setOutput("minor", version.minor);
-        core.setOutput("patch", version.patch);
-        core.setOutput("versionString", version.versionString);
     });
 }
 const getManifestVersion = async (file, packageName = ".*") => {
