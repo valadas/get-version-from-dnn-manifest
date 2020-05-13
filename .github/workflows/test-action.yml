@@ -10,7 +10,7 @@ jobs:
         uses: ./
         id: testAction
       - name: log-result
-        run: echo $MAJOR.$MINOR.$BUILD $VERSION_STRING
+        run: echo $MAJOR.$MINOR.$PATCH $VERSION_STRING
         env:
           MAJOR: ${{ steps.testAction.outputs.major }}
           MINOR: ${{ steps.testAction.outputs.minor }}
