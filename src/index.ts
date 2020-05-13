@@ -26,11 +26,20 @@ async function run() {
         }
         console.log("Using file: ", file);
         const versionString = await getManifestVersion(file);
-        console.log(versionString);
+        console.log("Found version string: ", versionString);
+        if (versionString === ""){
+            core.setFailed("No version found!");
+        }
+        const version = await getVersion(versionString);
+        console.log("Returning", version);
+        core.setOutput("major", version.major);
+        core.setOutput("minor", version.minor);
+        core.setOutput("patch", version.patch);
+        core.setOutput("versionString", version.versionString);
     });
 }
 
-const getManifestVersion = async (file: string, packageName: string = ".*", ) => {
+const getManifestVersion = async (file: string, packageName: string = ".*") => {
     var version = "";
     const fileContent = readFileSync(file).toString();
     const rx = new RegExp(`<package.*name=".*${packageName}.*".*version="(.*)".*>`);
@@ -47,6 +56,25 @@ const getManifestVersion = async (file: string, packageName: string = ".*", ) =>
         }
         return nodeVersion;
     }
+    return "";
+}
+
+const getVersion = async (versionString: string) => {
+    const parts = versionString.split('.');
+    const version: Version = {
+        major: parseInt(parts[0]),
+        minor: parseInt(parts[1]),
+        patch: parseInt(parts[2]),
+        versionString: versionString
+    };
+    return version;
+}
+
+interface Version {
+    major: number,
+    minor: number,
+    patch: number,
+    versionString: string
 }
 
 run();
