@@ -2,8 +2,9 @@ name: test-action
 on: push
 
 steps:
+  - uses: actions/checkout@v2
   - name: test-action
-    uses: ./action
+    uses: ./
     id: testAction
   - name: log-result
     run: echo $MAJOR.$MINOR.$BUILD $VERSION_STRING
