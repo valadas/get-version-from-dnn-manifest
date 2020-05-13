@@ -40,8 +40,18 @@ const getManifestVersion = async (file, packageName = ".*") => {
     const fileContent = fs_1.readFileSync(file).toString();
     const rx = new RegExp(`<package.*name=".*${packageName}.*".*version="(.*)".*>`);
     const node = rx.exec(fileContent);
-    console.log("Using package node: ", node);
-    return node ? node.toString() : "";
+    const noNodeFoundErrorMessage = "No matching node found!";
+    const nodeText = node ? node[0] : noNodeFoundErrorMessage;
+    if (nodeText === noNodeFoundErrorMessage) {
+        core.setFailed(noNodeFoundErrorMessage);
+    }
+    else {
+        const nodeVersion = node ? [1] : "";
+        if (version = "") {
+            core.setFailed("No version found on node");
+        }
+        return nodeVersion;
+    }
 };
 run();
 exports.default = run;
