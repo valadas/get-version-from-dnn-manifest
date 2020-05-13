@@ -41,7 +41,7 @@ jobs:
         id: testActionWithManifestPathAndPackage
         with:
           manifestPath: Resources/testManifest.dnn
-          package: Dnn.PersonaBar.UI_nl-NL
+          packageName: Dnn.PersonaBar.UI_nl-NL
       - name: Log Result
         run: echo $MAJOR.$MINOR.$PATCH $VERSION_STRING
         env:
